@@ -1,35 +1,84 @@
-import { NgModule, ModuleWithProviders } from '@angular/core';
+import { NgModule, ModuleWithProviders, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { SampleComponent } from './sample.component';
-import { SampleDirective } from './sample.directive';
-import { SamplePipe } from './sample.pipe';
-import { SampleService } from './sample.service';
+import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MaterialModule } from '@angular/material';
 
-export * from './sample.component';
-export * from './sample.directive';
-export * from './sample.pipe';
-export * from './sample.service';
+import {
+    SampleComponent,
+    BaseComponent,
+    P404Component,
+    CardComponent,
+    ToolbarComponent,
+    SidebarComponent,
+    NavbarComponent,
+    TableComponent,
+    FormComponent
+
+} from './components';
+
+import { SampleDirective } from './directives';
+import { SamplePipe } from './pipes';
+import { CallService, SampleService, AuthGuard, AuthService, WebsocketService } from './services';
+
 
 @NgModule({
-  imports: [
-    CommonModule
-  ],
-  declarations: [
-    SampleComponent,
-    SampleDirective,
-    SamplePipe
-  ],
-  exports: [
-    SampleComponent,
-    SampleDirective,
-    SamplePipe
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        FormsModule,
+        ReactiveFormsModule,
+        HttpClientModule,
+        MaterialModule
+    ],
+    declarations: [
+        SampleDirective,
+        SamplePipe,
+        SampleComponent,
+        BaseComponent,
+        P404Component,
+        CardComponent,
+        ToolbarComponent,
+        SidebarComponent,
+        NavbarComponent,
+        TableComponent,
+        FormComponent
+    ],
+    exports: [
+        SampleComponent,
+        BaseComponent,
+        P404Component,
+        CardComponent,
+        ToolbarComponent,
+        SidebarComponent,
+        NavbarComponent,
+        TableComponent,
+        FormComponent,
+        SampleDirective,
+        SamplePipe
+    ],
+    schemas: [
+        CUSTOM_ELEMENTS_SCHEMA
+    ]
 })
 export class SampleModule {
-  static forRoot(): ModuleWithProviders {
-    return {
-      ngModule: SampleModule,
-      providers: [SampleService]
-    };
-  }
+    static forRoot(): ModuleWithProviders {
+        return {
+            ngModule: SampleModule,
+            providers: [
+                SampleService,
+                CallService,
+                AuthGuard,
+                AuthService,
+                WebsocketService
+            ]
+        };
+    }
 }
+
+export * from './services'
+export * from './directives';
+export * from './pipes';
+export * from './components';
+export * from './utils'
