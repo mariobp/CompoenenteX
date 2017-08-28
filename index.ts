@@ -13,7 +13,8 @@ import {
     ToolbarComponent,
     SidebarComponent,
     TableComponent,
-    FormComponent
+    FormComponent,
+    RouteComponent
 
 } from './components';
 
@@ -41,7 +42,8 @@ import { CallService, SampleService, AuthGuard, AuthService, WebsocketService } 
         ToolbarComponent,
         SidebarComponent,
         TableComponent,
-        FormComponent
+        FormComponent,
+        RouteComponent
     ],
     exports: [
         SampleComponent,
@@ -52,6 +54,7 @@ import { CallService, SampleService, AuthGuard, AuthService, WebsocketService } 
         SidebarComponent,
         TableComponent,
         FormComponent,
+        RouteComponent,
         SampleDirective,
         SamplePipe
     ],

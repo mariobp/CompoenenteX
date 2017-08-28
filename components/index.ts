@@ -6,3 +6,4 @@ export * from './toolbar/toolbar.component';
 export * from './sidebar/sidebar.component';
 export * from './table/table.component';
 export * from './form/form.component';
+export * from './route/route.component'
