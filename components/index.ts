@@ -4,6 +4,5 @@ export * from './sample.component';
 export * from './card/card.component';
 export * from './toolbar/toolbar.component';
 export * from './sidebar/sidebar.component';
-export * from './navbar/navbar.component';
 export * from './table/table.component';
 export * from './form/form.component';

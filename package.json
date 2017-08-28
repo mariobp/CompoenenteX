@@ -1,16 +1,6 @@
 {
-  "name": "ex-componentex",
-  "version": "0.0.2",
-  "scripts": {
-    "build": "gulp build",
-    "build:watch": "gulp",
-    "docs": "npm run docs:build",
-    "docs:build": "compodoc -p tsconfig.json -n componentex -d docs --hideGenerator",
-    "docs:serve": "npm run docs:build -- -s",
-    "docs:watch": "npm run docs:build -- -s -w",
-    "lint": "tslint --type-check --project tsconfig.json src/**/*.ts",
-    "test": "tsc && karma start"
-  },
+  "name": "componentex",
+  "version": "0.0.7",
   "repository": {
     "type": "git",
     "url": "https://github.com/mariobp/ComponenteX"
@@ -26,49 +16,24 @@
   "bugs": {
     "url": "https://github.com/mariobp/ComponenteX/issues"
   },
-  "devDependencies": {
+  "module": "componentex.js",
+  "typings": "componentex.d.ts",
+  "peerDependencies": {
     "@angular/common": "^4.3.3",
-    "@angular/compiler": "^4.3.3",
-    "@angular/compiler-cli": "^4.3.3",
     "@angular/core": "^4.3.3",
-    "@angular/forms": "^4.3.3",
     "@angular/http": "^4.3.3",
     "@angular/platform-browser": "^4.3.3",
-    "@angular/platform-browser-dynamic": "^4.3.3",
-    "@angular/router": "^4.3.2",
-    "@compodoc/compodoc": "^1.0.0-beta.13",
-    "@types/jasmine": "2.5.38",
-    "@types/node": "^6.0.85",
-    "codelyzer": "~2.0.0",
-    "core-js": "^2.5.0",
-    "del": "^2.2.2",
-    "gulp": "^3.9.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-rollup": "^2.11.0",
-    "jasmine-core": "~2.5.2",
-    "jasmine-spec-reporter": "~3.2.0",
-    "karma": "~1.4.1",
-    "karma-chrome-launcher": "~2.0.0",
-    "karma-cli": "~1.0.1",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
-    "karma-jasmine": "~1.1.0",
-    "karma-jasmine-html-reporter": "^0.2.2",
-    "node-sass": "^4.5.2",
-    "node-sass-tilde-importer": "^1.0.0",
-    "node-watch": "^0.5.2",
-    "protractor": "~5.1.0",
-    "rollup": "^0.45.2",
-    "run-sequence": "^1.2.2",
+    "@angular/router": "^4.3.3",
     "rxjs": "^5.4.2",
-    "ts-node": "~2.0.0",
-    "tslint": "~4.5.0",
-    "typescript": "~2.2.0",
     "zone.js": "^0.8.16"
   },
-  "engines": {
-    "node": ">=6.0.0"
-  },
-  "dependencies": {
-    "@angular/http": "^4.3.3"
+  "devDependencies": {
+    "@angular/common": "^4.3.3",
+    "@angular/core": "^4.3.3",
+    "@angular/http": "^4.3.3",
+    "@angular/platform-browser": "^4.3.3",
+    "@angular/router": "^4.3.3",
+    "rxjs": "^5.4.2",
+    "zone.js": "^0.8.16"
   }
 }

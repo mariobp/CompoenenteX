@@ -11,18 +11,18 @@
         </div>
         <div class="collapse navbar-collapse">
             <div *ngIf="isMobileMenu()">
-                
+
             </div>
         </div>
     </div>
 </nav> -->
 <md-toolbar color="primary">
-    <button class="menu-button" md-icon-button (click)="onsidenavClick()">
+    <button class="menu-button" md-icon-button (click)="onsidenavClick($event)">
         <md-icon>menu</md-icon>
     </button>
     <span class="icon">{{title}}</span>
     <span class="spacer"></span>
-    <button  md-icon-button [mdMenuTriggerFor]="menu">
+    <button md-icon-button [mdMenuTriggerFor]="menu">
         <md-icon>more_vert</md-icon>
     </button>
     <md-menu #menu="mdMenu">

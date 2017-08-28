@@ -14,20 +14,20 @@ export class BaseComponent implements OnInit, AfterViewInit {
 
     @ViewChild('sidenav') sidenav: MdSidenav;
 
-    constructor(private router: Router, private _s: AuthService){}
-    
+    constructor(private router: Router, private _s: AuthService) { }
+
     ngAfterViewInit() {
-        this.initSidenav(window.innerWidth)
         this.router.events
-            .filter(event=> event instanceof NavigationEnd)
-            .subscribe( (event: NavigationEnd) => {
-                if(this.sidenav.mode === 'over'){
+            .filter(event => event instanceof NavigationEnd)
+            .subscribe((event: NavigationEnd) => {
+                if (this.sidenav.mode === 'over') {
                     this.sidenav.close();
                 }
             });
     }
 
-    ngOnInit(){
+    ngOnInit() {
+        this.initSidenav(window.innerWidth)
         $(document.body).addClass('nav-open');
     }
 
@@ -35,7 +35,7 @@ export class BaseComponent implements OnInit, AfterViewInit {
         this.initSidenav(event.target.innerWidth);
     }
 
-    onLogout(){
+    onLogout() {
         this._s.logout();
     }
 

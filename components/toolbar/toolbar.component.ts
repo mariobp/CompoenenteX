@@ -17,8 +17,8 @@ export class ToolbarComponent/* implements OnInit*/ {
     @Output() sidenavClick = new EventEmitter();
     @Input('title') public title: string;
 
-    onsidenavClick($event) {
-        this.sidenavClick.emit($event);
+    onsidenavClick(event) {
+        this.sidenavClick.emit(event);
     }
 
     // private listTitles: any[];

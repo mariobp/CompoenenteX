@@ -12,7 +12,6 @@ import {
     CardComponent,
     ToolbarComponent,
     SidebarComponent,
-    NavbarComponent,
     TableComponent,
     FormComponent
 
@@ -41,7 +40,6 @@ import { CallService, SampleService, AuthGuard, AuthService, WebsocketService } 
         CardComponent,
         ToolbarComponent,
         SidebarComponent,
-        NavbarComponent,
         TableComponent,
         FormComponent
     ],
@@ -52,7 +50,6 @@ import { CallService, SampleService, AuthGuard, AuthService, WebsocketService } 
         CardComponent,
         ToolbarComponent,
         SidebarComponent,
-        NavbarComponent,
         TableComponent,
         FormComponent,
         SampleDirective,
