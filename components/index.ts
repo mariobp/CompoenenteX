@@ -7,3 +7,6 @@ export * from './sidebar/sidebar.component';
 export * from './table/table.component';
 export * from './form/form.component';
 export * from './route/route.component'
+export * from './miga/miga.component'
+export * from './auto/auto.component'
+export * from './multi/multi.component'
