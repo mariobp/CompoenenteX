@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '@angular/material';
+import { AgmCoreModule, GoogleMapsAPIWrapper } from '@agm/core';
 
 import {
     SampleComponent,
@@ -17,14 +18,20 @@ import {
     RouteComponent,
     MigaComponent,
     AutoComponent,
-    MultiComponent
-
+    MultiComponent,
+    ExgmapComponent
 } from './components';
 
 import { SampleDirective } from './directives';
 import { SamplePipe } from './pipes';
-import { CallService, SampleService, AuthGuard, AuthService, WebsocketService } from './services';
+import { CallService, SampleService, AuthGuard, AuthService, WebsocketService, Ip } from './services';
 
+interface CustomConfig {
+    gmapkey?: string;
+    ip?: Ip;
+    login?: string;
+    isLogin?: string;
+}
 
 @NgModule({
     imports: [
@@ -33,7 +40,8 @@ import { CallService, SampleService, AuthGuard, AuthService, WebsocketService } 
         FormsModule,
         ReactiveFormsModule,
         HttpClientModule,
-        MaterialModule
+        MaterialModule,
+        AgmCoreModule
     ],
     declarations: [
         SampleDirective,
@@ -49,7 +57,8 @@ import { CallService, SampleService, AuthGuard, AuthService, WebsocketService } 
         RouteComponent,
         MigaComponent,
         AutoComponent,
-        MultiComponent
+        MultiComponent,
+        ExgmapComponent
     ],
     exports: [
         SampleComponent,
@@ -64,14 +73,16 @@ import { CallService, SampleService, AuthGuard, AuthService, WebsocketService } 
         MigaComponent,
         AutoComponent,
         MultiComponent,
+        ExgmapComponent,
         SampleDirective,
-        SamplePipe
+        SamplePipe,
     ],
     schemas: [
         CUSTOM_ELEMENTS_SCHEMA
     ]
 })
 export class SampleModule {
+
     static forRoot(): ModuleWithProviders {
         return {
             ngModule: SampleModule,
@@ -80,9 +91,9 @@ export class SampleModule {
                 CallService,
                 AuthGuard,
                 AuthService,
-                WebsocketService
+                WebsocketService,
             ]
-        };
+        }
     }
 }
 

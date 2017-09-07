@@ -27,6 +27,7 @@ export class Menu {
 
     addMenu(menu: MenuMeta) {
         this._menuList.push(menu);
+        console.log(this.menuList);
     }
 
 }

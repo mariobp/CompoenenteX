@@ -1,5 +1,5 @@
 import { Component, Input, forwardRef, OnInit, Output, EventEmitter } from '@angular/core';
-
+import 'rxjs/add/operator/toPromise';
 @Component({
     selector: 'ex-multi',
     templateUrl: './multi.component.html'
@@ -55,6 +55,7 @@ export class MultiComponent implements OnInit {
         const parametros = query;
         parametros['num_page'] = 0;
         this.service.list(parametros)
+            .toPromise()
             .then(data => data.json())
             .then(data => {
                 this.options = data.object_list;

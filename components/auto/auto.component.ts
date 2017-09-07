@@ -1,6 +1,6 @@
 import { Component, Input, Output, forwardRef, OnInit, EventEmitter } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-
+import 'rxjs/add/operator/toPromise';
 @Component({
     selector: 'ex-autocomplete',
     templateUrl: './auto.component.html',
@@ -63,6 +63,7 @@ export class AutoComponent {
     filterVal(val) {
         this.params['q'] = val ? val : '';
         this.service.list(this.params)
+            .toPromise()
             .then(data => data.json())
             .then(data => {
                 this.options = data.object_list

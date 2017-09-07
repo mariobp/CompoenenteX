@@ -61,6 +61,7 @@ export class AuthService {
     }
 
     getUser(): any {
+        this.isLogin().catch(err => this.removeUser(err));
         if (this.user) {
             return this.user;
         } else {
@@ -69,8 +70,8 @@ export class AuthService {
                 this.addUser(u);
                 return u;
             }
-            return null;
         }
+        return null;
     }
 
     login(body: any) {

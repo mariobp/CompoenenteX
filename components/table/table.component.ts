@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ElementRef, ViewChild, trigger, transition, style, animate, Output, EventEmitter  } from '@angular/core';
 import { BsNotify } from '../../utils/bs.notify';
 import { CallService } from '../../services/call.service';
-
+import 'rxjs/add/operator/toPromise';
 declare var $: any;
 declare var window: any;
 declare var swal: any;
@@ -189,7 +189,7 @@ export class TableComponent implements OnInit {
             }).then(() => {
                 const deletedList = [];
                 for (const item of this.selectedItems) {
-                    deletedList.push(this.service.delete(item.id))
+                    deletedList.push(this.service.delete(item.id).toPromise())
                 }
                 Promise.all(deletedList)
                     .then(data => {

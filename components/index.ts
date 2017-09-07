@@ -10,3 +10,4 @@ export * from './route/route.component'
 export * from './miga/miga.component'
 export * from './auto/auto.component'
 export * from './multi/multi.component'
+export * from './exgmap/exgmap.component';

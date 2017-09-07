@@ -1,7 +1,8 @@
-import { Component, Input, OnInit, AfterViewInit } from '@angular/core';
-import { FormGroup} from '@angular/forms';
+import { Component, Input, Output, OnInit, AfterViewInit, EventEmitter } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { BsNotify } from '../../utils';
+import 'rxjs/add/operator/toPromise';
 
 declare var $: any;
 declare var swal: any;
@@ -43,6 +44,7 @@ export class FormComponent implements OnInit, AfterViewInit {
     @Input() public otro = true;
     @Input() public debug = false;
     @Input() public retur = true;
+    @Output() public itemChange = new EventEmitter();
     public _ready: boolean;
     public item: any;
 
@@ -76,7 +78,7 @@ export class FormComponent implements OnInit, AfterViewInit {
             this.item = item;
             this.form.patchValue(this.item);
         }
-
+        this.itemChange.emit(this.item);
     }
 
     prePatchValue(value) {
@@ -167,9 +169,11 @@ export class FormComponent implements OnInit, AfterViewInit {
             this._ready = true;
             if (!!this.item) {
                 this.service.edit(this.item.id, body)
+                    .toPromise()
                     .then(data => {
                         this._ready = false;
                         this.successful(data);
+                        this.back();
                         swal({
                             title: 'Guardado!',
                             text: 'Registro se guardo con exito',
@@ -180,6 +184,7 @@ export class FormComponent implements OnInit, AfterViewInit {
                     .catch(error => this._error(error, 'Ha ocurrido un error al intentar gurdar los datos'));
             } else {
                 this.service.add(body)
+                    .toPromise()
                     .then(data => {
                         this.form.reset();
                         this._ready = false;
@@ -189,8 +194,9 @@ export class FormComponent implements OnInit, AfterViewInit {
                             type: 'success',
                             confirmButtonColor: '#213b78',
                         });
+                        this.successful(data);
                         if (!back) {
-                            this.successful(data);
+                            this.back();
                         }
                     })
                     .catch(error => this._error(error, 'Ha ocurrido un error al intentar gurdar los datos'));
@@ -229,6 +235,7 @@ export class FormComponent implements OnInit, AfterViewInit {
                 confirmButtonText: 'Eliminar'
             }).then(() => {
                 this.service.delete(this.item.id)
+                    .toPromise()
                     .then(data => {
                         this.successful(data);
                         this.back();
